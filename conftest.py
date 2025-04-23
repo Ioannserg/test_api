@@ -10,12 +10,13 @@ def auth_session():
     session = requests.Session()
     session.headers.update(HEADERS)
 
-    auth_response = session.post(f"{BASE_URL}/auth", json={"username": "admin", "password": "password123"})
+    auth_response = session.post(f"{BASE_URL}/login/access-token", data={"username":"theivangreatgod@mail.ru", "password": "Test12345"})
     assert auth_response.status_code == 200, "Ошибка авторизации, статус код не 200"
-    token = auth_response.json().get("token")
+    token = auth_response.json().get("access_token")
     assert token is not None, "Токен не найден в ответе"
 
-    session.headers.update({"Cookie": f"token={token}"})
+    session.headers.update({"authorization": f"access_token={token}"})
+
     return session
 
 

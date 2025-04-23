@@ -1,2 +1,2 @@
-BASE_URL = "https://restful-booker.herokuapp.com"
-HEADERS = {"Content-Type": "application/json", "Accept": "application/json"}
+BASE_URL = "https://api.pomidor-stage.ru/api/v1"
+HEADERS = {"Accept": "application/json"}
